@@ -14,7 +14,7 @@ Title="{Binding Title}">
                 <!-- <Image Source="academiadoze.png" HorizontalOptions="Center" VerticalOptions="Start" HeightRequest="200" WidthRequest="200"/> -->
                 <Image HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="Start">
                     <Image.Source>
-                        <x:AppThemeBinding Light="academiadoze_claro.png" Dark="academiadoze_escuro.png" />
+                        <x:AppThemeBinding Light="logo.png" Dark="logo.png" />
                     </Image.Source>
                 </Image>
                 <Label Text="Academia do Zé" Style="{StaticResource Headline}"/>

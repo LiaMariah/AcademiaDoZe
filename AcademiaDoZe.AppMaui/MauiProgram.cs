@@ -17,6 +17,9 @@ public static class MauiProgram
             fonts.AddFont("CormorantGaramond-SemiBold.ttf", "GothicTitle");
             fonts.AddFont("Inter-Regular.ttf", "GothicBody");
             fonts.AddFont("Inter-SemiBold.ttf", "GothicBodyBold");
+
+            // Adicione esta linha para registrar a fonte
+            fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialIcons");
         });
         // Configurar serviços da aplicação e repositórios
         ConfigurationHelper.ConfigureServices(builder.Services);
@@ -28,6 +31,7 @@ public static class MauiProgram
         builder.Services.AddTransient<DashboardListPage>();
         builder.Services.AddTransient<LogradouroListPage>();
         builder.Services.AddTransient<LogradouroPage>();
+        builder.Services.AddTransient<ConfigPage>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

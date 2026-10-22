@@ -1,4 +1,4 @@
-﻿using AcademiaDoZe.Presentation.AppMaui;
+﻿using AcademiaDoZe.AppMaui;
 using Android.App;
 using Android.Runtime;
 

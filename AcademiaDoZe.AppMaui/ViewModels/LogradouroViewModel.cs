@@ -1,7 +1,7 @@
 ﻿using AcademiaDoZe.Application.DTOs;
 using AcademiaDoZe.Application.Interfaces;
 using CommunityToolkit.Mvvm.Input;
-namespace AcademiaDoZe.Presentation.AppMaui.ViewModels;
+namespace AcademiaDoZe.AppMaui.ViewModels;
 
 [QueryProperty(nameof(LogradouroId), "Id")]
 public partial class LogradouroViewModel : BaseViewModel

@@ -1,5 +1,5 @@
-﻿using AcademiaDoZe.Presentation.AppMaui;
-using AcademiaDoZe.Presentation.AppMaui.Message;
+﻿using AcademiaDoZe.AppMaui;
+using AcademiaDoZe.AppMaui.Message;
 using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.DependencyInjection;
 

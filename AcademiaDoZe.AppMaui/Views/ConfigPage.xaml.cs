@@ -1,7 +1,7 @@
 ﻿using AcademiaDoZe.Application.Enums;
-using AcademiaDoZe.Presentation.AppMaui.Message;
+using AcademiaDoZe.AppMaui.Message;
 using CommunityToolkit.Mvvm.Messaging;
-namespace AcademiaDoZe.Presentation.AppMaui.Views;
+namespace AcademiaDoZe.AppMaui.Views;
 
 public partial class ConfigPage : ContentPage
 {

@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-namespace AcademiaDoZe.Presentation.AppMaui.ViewModels;
+namespace AcademiaDoZe.AppMaui.ViewModels;
 
 public partial class BaseViewModel : ObservableObject
 {

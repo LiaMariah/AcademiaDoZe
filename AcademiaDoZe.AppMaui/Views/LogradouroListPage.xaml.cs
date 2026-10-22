@@ -1,6 +1,6 @@
-﻿using AcademiaDoZe.Presentation.AppMaui.ViewModels;
+﻿using AcademiaDoZe.AppMaui.ViewModels;
 using AcademiaDoZe.Application.DTOs;
-namespace AcademiaDoZe.Presentation.AppMaui.Views;
+namespace AcademiaDoZe.AppMaui.Views;
 
 public partial class LogradouroListPage : ContentPage
 {

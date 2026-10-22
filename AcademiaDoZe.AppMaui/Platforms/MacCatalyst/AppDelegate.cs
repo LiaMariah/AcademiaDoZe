@@ -1,4 +1,4 @@
-﻿using AcademiaDoZe.Presentation.AppMaui;
+﻿using AcademiaDoZe.AppMaui;
 using Foundation;
 
 namespace AcademiaDoZe.AppMaui

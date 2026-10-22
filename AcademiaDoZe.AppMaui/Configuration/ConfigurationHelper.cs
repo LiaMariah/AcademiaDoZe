@@ -1,9 +1,9 @@
 ﻿using AcademiaDoZe.Application.DependencyInjection;
 using AcademiaDoZe.Application.Enums;
 using AcademiaDoZe.Application.Mappings;
-using AcademiaDoZe.Presentation.AppMaui.Message;
+using AcademiaDoZe.AppMaui.Message;
 using CommunityToolkit.Mvvm.Messaging;
-namespace AcademiaDoZe.Presentation.AppMaui.Configuration;
+namespace AcademiaDoZe.AppMaui.Configuration;
 
 public static class ConfigurationHelper
 {

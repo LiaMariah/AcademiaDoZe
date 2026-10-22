@@ -1,6 +1,6 @@
 ﻿using AcademiaDoZe.Application.Interfaces;
 using CommunityToolkit.Mvvm.Input;
-namespace AcademiaDoZe.Presentation.AppMaui.ViewModels;
+namespace AcademiaDoZe.AppMaui.ViewModels;
 
 public partial class DashboardListViewModel : BaseViewModel
 {

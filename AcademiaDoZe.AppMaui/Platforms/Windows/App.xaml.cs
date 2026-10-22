@@ -1,4 +1,4 @@
-﻿using AcademiaDoZe.Presentation.AppMaui;
+﻿using AcademiaDoZe.AppMaui;
 using Microsoft.UI.Xaml;
 
 // To learn more about WinUI, the WinUI project structure,

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-x:Class="AcademiaDoZe.Presentation.AppMaui.Views.LogradouroListPage"
-xmlns:vm="clr-namespace:AcademiaDoZe.Presentation.AppMaui.ViewModels"
+x:Class="AcademiaDoZe.AppMaui.Views.LogradouroListPage"
+xmlns:vm="clr-namespace:AcademiaDoZe.AppMaui.ViewModels"
 x:DataType="vm:LogradouroListViewModel"
 xmlns:dto="clr-namespace:AcademiaDoZe.Application.DTOs;assembly=AcademiaDoZe.Application"
 Title="{Binding Title}">

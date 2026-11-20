@@ -1,63 +1,82 @@
+
 using AcademiaDoZe.Application.Interfaces;
 using AcademiaDoZe.Application.Services;
 using AcademiaDoZe.Domain.Repositories;
 using AcademiaDoZe.Infrastructure.Repositories;
+using AcademiaDoZe.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AcademiaDoZe.Application.DependencyInjection;
 
 public static class ApplicationDependencyInjection
 {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    public static IServiceCollection AddApplicationServices(
+        this IServiceCollection services)
     {
         // Registra os serviços da camada de aplicação
         services.AddTransient<ILogradouroService, LogradouroService>();
         services.AddTransient<IColaboradorService, ColaboradorService>();
         services.AddTransient<IAlunoService, AlunoService>();
         services.AddTransient<IMatriculaService, MatriculaService>();
-        //services.AddTransient<IAcessoAlunoService, AcessoAlunoService>();
-        //services.AddTransient<IAcessoColaboradorService, AcessoColaboradorService>();
+        services.AddTransient<IControleAcessoService, ControleAcessoService>();
 
-        // AddScoped: cria uma instância do serviço por requisição HTTP.
-        // AddSingleton: cria uma única instância do serviço durante toda a vida útil da aplicação.
-        // AddTransient: cria uma nova instância do serviço toda vez que ele é solicitado.
+        // AddScoped: cria uma instância por escopo.
+        // AddSingleton: cria uma única instância durante a aplicação.
+        // AddTransient: cria uma nova instância a cada resolução.
 
-        // Registra as fábricas Func<IRepo> para criar instâncias sob demanda nos services
+        // Fábrica de LogradouroRepository
         services.AddTransient(provider =>
         {
             var config = provider.GetRequiredService<RepositoryConfig>();
-            return (Func<ILogradouroRepository>)(() => new LogradouroRepository(config.ConnectionString, config.DatabaseType));
+
+            return (Func<ILogradouroRepository>)(() =>
+                new LogradouroRepository(
+                    config.ConnectionString,
+                    config.DatabaseType));
         });
 
+        // Fábrica de ColaboradorRepository
         services.AddTransient(provider =>
         {
             var config = provider.GetRequiredService<RepositoryConfig>();
-            return (Func<IColaboradorRepository>)(() => new ColaboradorRepository(config.ConnectionString, config.DatabaseType));
+
+            return (Func<IColaboradorRepository>)(() =>
+                new ColaboradorRepository(
+                    config.ConnectionString,
+                    config.DatabaseType));
         });
 
+        // Fábrica de AlunoRepository
         services.AddTransient(provider =>
         {
             var config = provider.GetRequiredService<RepositoryConfig>();
-            return (Func<IAlunoRepository>)(() => new AlunoRepository(config.ConnectionString, config.DatabaseType));
+
+            return (Func<IAlunoRepository>)(() =>
+                new AlunoRepository(
+                    config.ConnectionString,
+                    config.DatabaseType));
         });
 
+        // Fábrica de MatriculaRepository
         services.AddTransient(provider =>
         {
             var config = provider.GetRequiredService<RepositoryConfig>();
-            return (Func<IMatriculaRepository>)(() => new MatriculaRepository(config.ConnectionString, config.DatabaseType));
+
+            return (Func<IMatriculaRepository>)(() =>
+                new MatriculaRepository(
+                    config.ConnectionString,
+                    config.DatabaseType));
         });
 
-        //services.AddTransient(provider =>
-        //{
-        //    var config = provider.GetRequiredService<RepositoryConfig>();
-        //    return (Func<IAcessoAlunoRepository>)(() => new AcessoAlunoRepository(config.ConnectionString, config.DatabaseType));
-        //});
+        // Repositório de Controle de Acesso
+        services.AddTransient<IRegistroAcessoRepository>(provider =>
+        {
+            var config = provider.GetRequiredService<RepositoryConfig>();
 
-        //services.AddTransient(provider =>
-        //{
-        //    var config = provider.GetRequiredService<RepositoryConfig>();
-        //    return (Func<IAcessoColaboradorRepository>)(() => new AcessoColaboradorRepository(config.ConnectionString, config.DatabaseType));
-        //});
+            return new RegistroAcessoRepository(
+                config.ConnectionString,
+                config.DatabaseType);
+        });
 
         return services;
     }

@@ -1,7 +1,9 @@
-﻿using AcademiaDoZe.AppMaui;
+﻿using AcademiaDoZe.Application.Interfaces;
+using AcademiaDoZe.AppMaui;
 using AcademiaDoZe.AppMaui.Configuration;
 using AcademiaDoZe.AppMaui.ViewModels;
 using AcademiaDoZe.AppMaui.Views;
+using AcademiaDoZe.Infrastructure.Services;
 using Microsoft.Extensions.Logging;
 namespace AcademiaDoZe.AppMaui;
 
@@ -42,6 +44,9 @@ public static class MauiProgram
         builder.Services.AddTransient<MatriculaViewModel>();
         builder.Services.AddTransient<MatriculaListPage>();
         builder.Services.AddTransient<MatriculaPage>();
+        builder.Services.AddTransient<ControleAcessoViewModel>();
+        builder.Services.AddTransient<ControleAcessoPage>();
+        builder.Services.AddTransient<IControleAcessoService, ControleAcessoService>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

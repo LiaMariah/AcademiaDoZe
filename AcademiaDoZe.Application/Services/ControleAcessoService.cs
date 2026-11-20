@@ -34,13 +34,11 @@ public class ControleAcessoService : IControleAcessoService
         {
             var alunos = await _alunoService.ObterTodosAsync();
 
-            var filtrados = alunos.Where(a =>
+            foreach (var aluno in alunos.Where(a =>
                 string.IsNullOrWhiteSpace(termo) ||
                 a.Nome.Contains(termo, StringComparison.OrdinalIgnoreCase) ||
                 a.Cpf.Contains(termo) ||
-                a.Id.ToString() == termo);
-
-            foreach (var aluno in filtrados)
+                a.Id.ToString() == termo))
             {
                 resultado.Add(await CriarPessoaAsync(
                     aluno.Id,
@@ -53,13 +51,11 @@ public class ControleAcessoService : IControleAcessoService
         {
             var colaboradores = await _colaboradorService.ObterTodosAsync();
 
-            var filtrados = colaboradores.Where(c =>
+            foreach (var colaborador in colaboradores.Where(c =>
                 string.IsNullOrWhiteSpace(termo) ||
                 c.Nome.Contains(termo, StringComparison.OrdinalIgnoreCase) ||
                 c.Cpf.Contains(termo) ||
-                c.Id.ToString() == termo);
-
-            foreach (var colaborador in filtrados)
+                c.Id.ToString() == termo))
             {
                 resultado.Add(await CriarPessoaAsync(
                     colaborador.Id,
@@ -187,7 +183,8 @@ public class ControleAcessoService : IControleAcessoService
                     NomePessoa = nome,
                     Tipo = tipo,
                     Entrada = registro.Entrada,
-                    Saida = null
+                    Saida = null,
+                    EhSaida = false
                 });
             }
 
@@ -201,13 +198,14 @@ public class ControleAcessoService : IControleAcessoService
                     NomePessoa = nome,
                     Tipo = tipo,
                     Entrada = registro.Entrada,
-                    Saida = saida
+                    Saida = saida,
+                    EhSaida = true
                 });
             }
         }
 
         return eventos
-            .OrderByDescending(e => e.Saida ?? e.Entrada)
+            .OrderByDescending(e => e.EhSaida ? e.Saida : e.Entrada)
             .ToList();
     }
 

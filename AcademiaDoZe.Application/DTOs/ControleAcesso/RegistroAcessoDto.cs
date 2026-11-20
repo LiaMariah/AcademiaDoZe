@@ -6,19 +6,19 @@ public class RegistroAcessoDto
     public string Id { get; set; } = string.Empty;
     public string PessoaId { get; set; } = string.Empty;
     public string NomePessoa { get; set; } = string.Empty;
+
     public TipoPessoaAcesso Tipo { get; set; }
 
     public DateTime Entrada { get; set; }
     public DateTime? Saida { get; set; }
 
-    public bool EhSaida =>
-        Id.EndsWith("-S", StringComparison.OrdinalIgnoreCase);
+    public bool EhSaida { get; set; }
 
     public string Horario =>
         (EhSaida ? Saida ?? Entrada : Entrada).ToString("HH:mm");
 
     public TimeSpan? TempoPermanencia =>
-        Saida.HasValue
+        EhSaida && Saida.HasValue
             ? Saida.Value - Entrada
             : null;
 
@@ -26,13 +26,11 @@ public class RegistroAcessoDto
     {
         get
         {
-            if (!TempoPermanencia.HasValue)
+            if (TempoPermanencia is not TimeSpan tempo)
                 return string.Empty;
 
-            var tempo = TempoPermanencia.Value;
-
-            if (tempo.TotalMinutes < 1)
-                return $"{Math.Max(0, tempo.Seconds)} segundos";
+            if (tempo.TotalSeconds < 60)
+                return $"{Math.Max(0, (int)tempo.TotalSeconds)} segundos";
 
             if (tempo.TotalHours < 1)
                 return $"{(int)tempo.TotalMinutes} min";
